@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import estilos from '../css/login.module.css';
+import estilos from '../css/modules/login.module.css';
 import logo from '../assets/logo_hotel.png';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';

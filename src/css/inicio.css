@@ -1,0 +1,26 @@
+.inicio{
+    padding: 0 20px;
+}
+
+.cards_room{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 40px 0;
+}
+
+/* 
+.grid_inicio{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+} */
+
+
+/* .inicio .chart{
+    background: red;
+} */
+
+.inicio .table{
+    background: green;
+}

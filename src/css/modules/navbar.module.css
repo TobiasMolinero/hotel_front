@@ -58,13 +58,18 @@
 }
 
 .navbar ul>li{
-    padding: 4px;
+    padding: 4px 4px 4px 8px;
     margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.link{
     display: flex;
     align-items: center;
     gap: 7px;
-    border-radius: 5px;
-    cursor: pointer;
+    color: #e2e2e2;
+    text-decoration: none;
 }
 
 .navbar ul>li:hover{
