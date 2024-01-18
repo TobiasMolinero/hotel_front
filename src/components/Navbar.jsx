@@ -2,16 +2,24 @@
 import estilos from '../css/modules/navbar.module.css';
 import logo from '../assets/logo_hotel_blanco-sin_bg.png';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
+
+  const [userData, setUserData] = useState();
+
+  const getUserData = () => {
+    setUserData(JSON.parse(localStorage.getItem('userData')));
+  }
+
+  useEffect(() => {
+    getUserData()
+  }, [])
+
   return (
     <nav className={estilos.navbar}>
       <div className={estilos.container_logo}>
         <img src={logo} alt="logo hotel" />
-      </div>
-      <hr />
-      <div className={estilos.container_user}>
-        <i className='bi bi-person-circle'></i>Usuario
       </div>
       <hr />
       <div className="container_menu">

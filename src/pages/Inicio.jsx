@@ -3,27 +3,48 @@
 import Navbar from '../components/Navbar'
 import Header from '../components/header';
 import CardState from '../components/cards/cardState';
+import TablaInicio from '../components/tables/TablaInicio';
 import '../App.css';
 import '../css/inicio.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../constants/functions';
 
 const Inicio = () => {
+
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem('token');
 
   const [disponibles, setDisponibles] = useState(0);
   const [reservadas, setReservadas] = useState(0);
 
   const getCantidades = async() => {
     try {
-      const response = await fetch('http://localhost:3000/habitaciones/totales');
+      const response = await fetch('http://localhost:3000/habitaciones/totales', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      });
 
-      var data = await response.json()
+      var data = await response.json();
+
+      if(data.message){
+        alert(data.message);
+        logout();
+        navigate('/login');
+      } else {
+        setDisponibles(data[0].cant);
+        setReservadas(data[1].cant);
+      }
 
     } catch (error) {
-      alert(data.message)
+      alert(error.message);
+    
     }
 
-    setDisponibles(data[0].cant);
-    setReservadas(data[1].cant);
   }
 
   useEffect(()=> {
@@ -36,16 +57,14 @@ const Inicio = () => {
       <div className="content inicio">
         <Header nombreIcono={'bi-house-door-fill'} title={'Inicio'}/>
         <section className='cards_room'>
-          <CardState backgroundColor={'#006b9c'} title={'Total de habitaciones'} color={'#ddd'} cantidad={disponibles + reservadas}/>
-          <CardState backgroundColor={'#005000'} title={'Habitaciones disponibles'} color={'#ddd'} cantidad={disponibles}/>
-          <CardState backgroundColor={'#e0000b'} title={'Habitaciones reservadas'} color={'#ddd'} cantidad={reservadas}/>
+          <CardState backgroundColor={'#006b9c'} title={'Total de habitaciones'} color={'#ebebeb'} cantidad={disponibles + reservadas}/>
+          <CardState backgroundColor={'#006e00'} title={'Habitaciones disponibles'} color={'#ebebeb'} cantidad={disponibles}/>
+          <CardState backgroundColor={'#ee0410'} title={'Habitaciones reservadas'} color={'#ebebeb'} cantidad={reservadas}/>
         </section>
+        <h2 className='title_table'>Reservas</h2>
         <div className='grid_inicio'>
-          {/* <section className='chart'>
-            <h1>hola</h1>
-          </section> */}
           <section className='table'>
-            <h1>hola</h1>
+            <TablaInicio />
           </section>
         </div>
       </div>

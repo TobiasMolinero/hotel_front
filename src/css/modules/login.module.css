@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../assets/foto_banner.jpg');
+    background-image: url('../../assets/foto_banner.jpg');
     background-size: cover;
     background-position: center bottom;
 }
@@ -35,7 +35,7 @@
 .login_intro h2{
     color: #e2e2e2;
     text-align: center;
-    font-size: 2.8rem;
+    font-size: 2rem;
     flex-grow: 1;
 }
 

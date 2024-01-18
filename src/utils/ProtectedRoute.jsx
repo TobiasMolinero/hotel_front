@@ -8,7 +8,7 @@ export const ProtectedRoute = () => {
 
     const [auth, setAuth] = useState(JSON.parse(localStorage.getItem('auth')));
     
-    if(auth !== true){
+    if(!auth){
         return <Navigate to='/login' />
     }
 

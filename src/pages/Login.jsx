@@ -4,6 +4,7 @@ import estilos from '../css/modules/login.module.css';
 import logo from '../assets/logo_hotel.png';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { login } from '../constants/functions';
 
 const Login = () => {
 
@@ -12,10 +13,10 @@ const Login = () => {
     const [usuario, setUsuario] = useState('');
     const [clave, setClave] = useState('');
 
-    const login = async(e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault()
         try {
-            var response = await fetch('http://localhost:3000/login', {
+            var response = await fetch('http://localhost:3000/usuarios/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,20 +28,21 @@ const Login = () => {
                 })
             });
             
-            var data = await response.json()
+            var data = await response.json();
+
+            if(data.auth){
+                login(data.token, data.userData);
+                alert(data.message);
+                navigate('/app/inicio');
+                e.target.reset;
+            } else {
+                alert(data.message);
+            }
             
         } catch (error) {
             alert(data.error);
         }
-        
-        if(data.auth === true){
-            localStorage.setItem('auth', JSON.stringify(data.auth))
-            localStorage.setItem('token', JSON.stringify(data.token));
-            alert(data.message);
-            navigate('/app/inicio');
-        } else {
-            alert(data.message);
-        }
+
     };
 
   return (
@@ -48,11 +50,11 @@ const Login = () => {
       <div className={estilos.container_login}>
         <div className={estilos.login_intro}>
             <img src={logo} alt="logo" />
-            <h2>Sistema de Gestión</h2>
+            <h2>Control de Gestión de reservas</h2>
         </div>
         <div className={estilos.container_form}>
             <h2>Ingresar al sistema</h2>
-            <form onSubmit={login}>
+            <form onSubmit={handleSubmit}>
                 <div className={estilos.group_input}>
                     <label htmlFor="txtUsuario">Usuario</label>
                     <input type="text" id="txtUsuario" onChange={(e) => {
