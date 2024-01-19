@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
@@ -6,14 +8,17 @@ import dayjs from "dayjs";
 import '../App.css';
 import '../css/reservas.css';
 import { useState, useEffect } from "react";
+import { logout } from "../constants/functions";
+import { useNavigate } from "react-router-dom";
 
 const Reservas = () => {
 
   const localizer = dayjsLocalizer(dayjs);
-
+  const navigate = useNavigate();
   const token = localStorage.getItem('token');
 
-  const [reservas, setReservas] = useState([]);
+  const [data, setData] = useState([]);
+  const [reservas, setReservas] = useState();
 
   const getReservas = async() => {
     try {
@@ -33,31 +38,42 @@ const Reservas = () => {
       logout();
       navigate('/login');
     } else {
-      setReservas(data.results);
+      setData(data.results);
     }  
   };
 
-  const events = [{
-    start: dayjs('2024-01-18T23:00:00').toDate(),
-    end: dayjs('2024-01-20T14:00:00').toDate(),
-    title: 'Caconaaaa'
-  }]
+  const dibujarCalendario = () => {
+      let listaReservas = []
+      data.forEach(element => {
+        listaReservas.push({
+          start: dayjs(element.fecha_entrada).toDate(),
+          end: dayjs(element.fecha_salida).toDate(),
+          title: `Hab. ${element.nro_habitacion} - ${element.categoria}, ${element.nombre + ' ' + 
+                  element.apellido}, DNI: ${element.nro_documento}`
+        })
+      });
+      setReservas(listaReservas);
+  };
 
   useEffect(() => {
-    getReservas();
+    getReservas([]);
   }, []);
+
+  useEffect(() => {
+    dibujarCalendario();
+  }, [data])
 
   return (
     <div className="app">
       <Navbar />
       <div className="content reservas">
         <Header nombreIcono={'bi-calendar3'} title={'Reservas'}/>
-        <div className="display">
+        <div className="display_reservas">
           <div className="container_calendar">
             <Calendar 
               localizer={localizer} 
-              events={events}
-              views={["month"]}
+              events={reservas}
+              views={["month", "week"]}
               style={{
                 fontSize: "1.4rem",
               }}

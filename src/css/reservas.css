@@ -1,11 +1,12 @@
-.display{
+.display_reservas{
     display: grid;
     place-items: center;
+    min-height: 500px;
 }
 
 .container_calendar{
     background: #fbfbfb;
-    height: 580px;
+    height: 100%;
     width: 800px;
     padding: 20px;
     box-shadow: 0 3px 4px #ada9a9;

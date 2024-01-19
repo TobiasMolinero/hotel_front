@@ -49,6 +49,7 @@
     align-items: center;
     gap: 7px;
     box-shadow: 2px 2px 4px #585858;
+    color: rgb(231, 13, 13);
 }
 
 .header>div .boton_usuario ul li::before{
@@ -63,7 +64,7 @@
 }
 
 .header>div .boton_usuario ul li:hover{
-    color: black;
+    color: red;
 }
 
 .header>div .boton_usuario ul li i{

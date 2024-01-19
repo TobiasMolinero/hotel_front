@@ -35,7 +35,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link className={estilos.link}>
+            <Link to={'/app/recepcion'} className={estilos.link}>
               <i className="bi bi-box-arrow-in-right"></i>Recepción
             </Link>
           </li>

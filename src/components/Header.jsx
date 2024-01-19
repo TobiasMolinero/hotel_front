@@ -43,7 +43,7 @@ const Header = ({
           <i className='bi bi-person-circle'></i>
           <ul hidden={dropDown ? false : true} >
             <li onClick={cerrarSesion} title='Cerrar sesión'>
-              <i className='bi bi-box-arrow-right'></i>Cerrar sesión
+              <i className='bi bi-x-circle'></i>Cerrar sesión
             </li>
           </ul>
         </div>
