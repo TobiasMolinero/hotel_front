@@ -10,37 +10,39 @@
     justify-content: end;
     align-items: center;
     color: #585858;
-    padding: 10px 20px 10px 0;
+    padding: 0 20px 0 0;
     margin-bottom: 10px;
     box-shadow: 0 1px 3px #585858;
-    position: relative;
 }
 
-.header>div p{
+.header>div .boton_usuario{
+    position: relative;
     display: flex;
     align-items: center;
     gap: 7px;
     cursor: pointer;
-
+    padding: 10px 0;
 }
 
-.header>div i{
+.header>div .boton_usuario:hover{
+    color: black;
+}
+
+.header>div .boton_usuario i{
     font-size: 2.8rem;
 }
 
-.header>div ul{
+.header>div .boton_usuario ul{
     position: absolute;
     top: 57px;
-    right: 20px;
-    background: transparent;
     list-style-type: none;
     padding-top: 10px;
     cursor: pointer;
 }
 
-.header>div ul li{
+.header>div .boton_usuario ul li{
     position: relative;
-    padding: 10px 15px;
+    padding: 10px;
     border-radius: 10px;
     background-color: #f5f5f5;
     display: flex;
@@ -49,7 +51,7 @@
     box-shadow: 2px 2px 4px #585858;
 }
 
-.header>div ul li::before{
+.header>div .boton_usuario ul li::before{
     content: "";
     position: absolute;
     top: -5px;
@@ -60,11 +62,11 @@
     background: inherit;
 }
 
-.header>div ul li:hover{
+.header>div .boton_usuario ul li:hover{
     color: black;
 }
 
-.header>div ul li i{
+.header>div .boton_usuario ul li i{
     font-size: 2rem;
 }
 

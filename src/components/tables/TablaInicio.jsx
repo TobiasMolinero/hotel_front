@@ -48,6 +48,8 @@ const TablaInicio = () => {
           <th>N° Reserva</th>
           <th>Cliente</th>
           <th>N° Habitación</th>
+          <th>Categorìa</th>
+          <th>Piso</th>
           <th>Fecha Ingreso</th>
           <th>Fecha Salida</th>
         </tr>
@@ -55,7 +57,7 @@ const TablaInicio = () => {
       <tbody>
         {tabla.length === 0 ? 
           <tr>
-            <td colSpan={5}>
+            <td colSpan={7}>
               <h2>No hay habitaciones reservadas</h2>
             </td>
           </tr>
@@ -64,6 +66,8 @@ const TablaInicio = () => {
               <td>{t.nro_reserva}</td>
               <td>{t.nombre}{' '}{t.apellido}</td>
               <td>{t.nro_habitacion}</td>
+              <td>{t.categoria}</td>
+              <td>{t.piso}</td>
               <td>{t.fecha_entrada.substring(0, 10)}</td>
               <td>{t.fecha_salida.substring(0, 10)}</td>
             </tr>)

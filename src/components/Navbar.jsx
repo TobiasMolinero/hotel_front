@@ -30,7 +30,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link className={estilos.link}>
+            <Link to={'/app/reservas'} className={estilos.link}>
               <i className='bi bi-calendar3'></i>Reservas
             </Link>
           </li>

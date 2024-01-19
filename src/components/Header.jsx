@@ -38,15 +38,15 @@ const Header = ({
   return (
     <header className={estilos.header}>
       <div >
-        <p onClick={showHiddenDropDown}>
+        <div className={estilos.boton_usuario} onMouseEnter={showHiddenDropDown} onMouseLeave={showHiddenDropDown}>
           {userData ? userData.nombre + ' ' + userData.apellido : ''}
           <i className='bi bi-person-circle'></i>
-        </p>
-        <ul hidden={dropDown ? false : true}>
-          <li onClick={cerrarSesion} title='Cerrar sesión'>
-            <i className='bi bi-box-arrow-right'></i>Cerrar sesión
-          </li>
-        </ul>
+          <ul hidden={dropDown ? false : true} >
+            <li onClick={cerrarSesion} title='Cerrar sesión'>
+              <i className='bi bi-box-arrow-right'></i>Cerrar sesión
+            </li>
+          </ul>
+        </div>
       </div>
       <h2><i className={`bi ${nombreIcono}`}></i>{title}</h2>
     </header>

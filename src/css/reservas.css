@@ -1,0 +1,12 @@
+.display{
+    display: grid;
+    place-items: center;
+}
+
+.container_calendar{
+    background: #fbfbfb;
+    height: 580px;
+    width: 800px;
+    padding: 20px;
+    box-shadow: 0 3px 4px #ada9a9;
+}

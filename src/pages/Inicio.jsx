@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import Navbar from '../components/Navbar'
-import Header from '../components/header';
+import Header from '../components/Header';
 import CardState from '../components/cards/cardState';
 import TablaInicio from '../components/tables/TablaInicio';
 import '../App.css';
