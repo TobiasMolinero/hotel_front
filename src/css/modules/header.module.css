@@ -1,5 +1,5 @@
 .header{
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .header>div{
@@ -49,7 +49,7 @@
     align-items: center;
     gap: 7px;
     box-shadow: 2px 2px 4px #585858;
-    color: rgb(231, 13, 13);
+    color: #ce0c0c;
 }
 
 .header>div .boton_usuario ul li::before{

@@ -1,12 +1,39 @@
 
-.display{
-    padding: 0 20px;
-    height: 500px;
+.display_recepcion{
+    margin: 0 20px;
+}
+
+.menu_recepcion{
+    background: #f5f5f5;
+    margin-bottom: 10px;
+    box-shadow: 0 3px 4px #ada9a9;
+    border-radius: 5px;
+}
+
+.menu_recepcion ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+}
+
+.menu_recepcion ul li{
+    padding: 10px 20px;
+    border-top: 2px solid transparent;
+    cursor: pointer;
+}
+
+.menu_recepcion ul li:hover{
+    background: #ececec;
+    border-top: 2px solid #131D40;
+    box-shadow: 0 0 5px #bdbdbd inset;
+
 }
 
 .container_cards{
-    background: green;
-    min-height: 100%;
-    min-width: 100%;
-    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    justify-content: start;
+    gap: 9px;
 }

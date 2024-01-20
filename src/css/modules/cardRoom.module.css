@@ -1,0 +1,49 @@
+.card{
+    background: red;
+    width: 270px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.info{
+    padding: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.info h3{
+    font-size: 2.8rem;
+}
+
+.info p{
+    font-size: 1.4rem;
+}
+
+.img{
+    width: 50%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding-right: 10px;
+    opacity: 0.3;
+}
+
+.img img{
+    width: 90px;
+    height: 90px;
+}
+
+.footer{
+    padding: 5px;
+    background: rgb(136, 0, 0);
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+    text-align: center;
+}
+
+.footer .link{
+    font-size: 1.2rem;
+    color: #ebebeb;
+}
