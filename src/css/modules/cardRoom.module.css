@@ -1,5 +1,4 @@
 .card{
-    background: red;
     width: 270px;
     border-radius: 5px;
     display: flex;
@@ -11,10 +10,11 @@
     width: 50%;
     display: flex;
     flex-direction: column;
+    color: #ebebeb;
 }
 
 .info h3{
-    font-size: 2.8rem;
+    font-size: 3.5rem;
 }
 
 .info p{
@@ -31,13 +31,13 @@
 }
 
 .img img{
-    width: 90px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
 }
 
 .footer{
     padding: 5px;
-    background: rgb(136, 0, 0);
+    background: #af030c;
     width: 100%;
     border-radius: 0 0 5px 5px;
     text-align: center;
@@ -46,4 +46,5 @@
 .footer .link{
     font-size: 1.2rem;
     color: #ebebeb;
+    text-decoration: none;
 }
