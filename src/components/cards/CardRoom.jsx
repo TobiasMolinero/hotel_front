@@ -7,6 +7,7 @@ import estilos from '../../css/modules/cardRoom.module.css';
 import cama from '../../assets/iconos/cama.png';
 import reloj from '../../assets/iconos/reloj.png';
 import basura from '../../assets/iconos/basura.png';
+import calendario from '../../assets/iconos/calendario.png'
 
 const CardRoom = ({
   nroHabitacion,
@@ -26,12 +27,14 @@ const CardRoom = ({
       background: {
         azul: '#006b9c',
         verde: '#006e00',
-        rojo: '#ee0410'
+        rojo: '#ee0410',
+        azul2: '#001e86'
       },
       footer: {
         azul: '#004a6d',
         verde: '#004d00',
-        rojo: '#af030c'
+        rojo: '#af030c',
+        azul2: '#030056'
       }
     }
   
@@ -44,6 +47,9 @@ const CardRoom = ({
     } else if(estado === 'Limpieza'){
       setBackground(colores.background.azul);
       setFooterCard(colores.footer.azul);
+    } else if(estado === 'Reservado'){
+      setBackground(colores.background.azul2);
+      setFooterCard(colores.footer.azul2);
     }
   }
 
@@ -54,6 +60,8 @@ const CardRoom = ({
       setIcono(reloj);
     } else if(estado === 'Limpieza'){
       setIcono(basura);
+    } else if(estado === 'Reservado'){
+      setIcono(calendario);
     }
   }
 
