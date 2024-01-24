@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Inicio from './pages/Inicio';
 import Reservas from './pages/Reservas';
 import Recepcion from './pages/Recepcion';
-import Navbar from './components/Navbar';
+import Clientes from './pages/Clientes';
 
 function App() {
 
@@ -20,6 +20,7 @@ function App() {
             <Route path='/app/inicio' element={<Inicio />}/>
             <Route path='/app/reservas' element={<Reservas />}/>
             <Route path='/app/recepcion' element={<Recepcion />}/>
+            <Route path='/app/clientes' element={<Clientes />}/>
           </Route>
 
         </Routes>

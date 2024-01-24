@@ -18,6 +18,8 @@ const Inicio = () => {
 
   const [disponibles, setDisponibles] = useState(0);
   const [reservadas, setReservadas] = useState(0);
+  const [ocupadas, setOcupadas] = useState(0);
+  const [limpieza, setLimpieza] = useState(0);
 
   const getCantidades = async() => {
     try {
@@ -30,20 +32,21 @@ const Inicio = () => {
       });
 
       var data = await response.json();
+      console.log(data)
+    } catch (error) {
+      alert(error.message);
+    
+    }
 
       if(data.message){
         alert(data.message);
         logout();
         navigate('/login');
       } else {
-        setDisponibles(data[0].cant);
-        setReservadas(data[1].cant);
+        setDisponibles(data[0].cant || 0);
+        // setReservadas(data[1].cant || 0);
+        // setOcupadas(data[2].cant || 0)
       }
-
-    } catch (error) {
-      alert(error.message);
-    
-    }
 
   }
 
@@ -57,9 +60,10 @@ const Inicio = () => {
       <div className="content inicio">
         <Header nombreIcono={'bi-house-door-fill'} title={'Inicio'}/>
         <section className='cards_room'>
-          <CardState backgroundColor={'#006b9c'} title={'Total de habitaciones'} color={'#ebebeb'} cantidad={disponibles + reservadas}/>
-          <CardState backgroundColor={'#006e00'} title={'Habitaciones disponibles'} color={'#ebebeb'} cantidad={disponibles}/>
-          <CardState backgroundColor={'#ee0410'} title={'Habitaciones reservadas'} color={'#ebebeb'} cantidad={reservadas}/>
+          <CardState backgroundColor={'#006e00'} title={'Habitaciones disponibles'} color={'#ebebeb'} cantidad={disponibles} estado={'disponible'}/>
+          <CardState backgroundColor={'#001e86'} title={'Habitaciones reservadas'} color={'#ebebeb'} cantidad={reservadas} estado={'reservado'}/>
+          <CardState backgroundColor={'#006b9c'} title={'Habitaciones en limpieza'} color={'#ebebeb'} cantidad={limpieza} estado={'limpieza'}/>
+          <CardState backgroundColor={'#ee0410'} title={'Habitaciones ocupadas'} color={'#ebebeb'} cantidad={ocupadas} estado={'ocupado'}/>
         </section>
         <h2 className='title_table'>Reservas</h2>
         <div className='grid_inicio'>

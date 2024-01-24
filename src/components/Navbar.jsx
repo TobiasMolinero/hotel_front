@@ -6,14 +6,16 @@ import { useEffect, useState } from 'react';
 
 const Navbar = () => {
 
-  const [userData, setUserData] = useState();
+
+  const [userType, setUserType] = useState();
 
   const getUserData = () => {
-    setUserData(JSON.parse(localStorage.getItem('userData')));
+    const data = JSON.parse(localStorage.getItem('userData'));
+    setUserType(data.descripcion);
   }
 
   useEffect(() => {
-    getUserData()
+    getUserData();
   }, [])
 
   return (
@@ -50,21 +52,21 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link className={estilos.link}>
+            <Link to={'/app/clientes'} className={estilos.link}>
               <i className='bi bi-people-fill'></i>Clientes
             </Link>
           </li>
-          <li>
+          {/* <li hidden={userType === 'empleado' ? true : false}>
             <Link className={estilos.link}>
               <i className="bi bi-file-earmark-spreadsheet"></i>Reportes
             </Link>
-          </li>
-          <li>
+          </li> */}
+          <li hidden={userType === 'empleado' ? true : false}>
             <Link className={estilos.link}>
               <i className='bi bi-person-fill-gear'></i>Usuarios
             </Link>
           </li>
-          <li>
+          <li hidden={userType === 'empleado' ? true : false}>
             <Link className={estilos.link}>
               <i className='bi bi-gear-fill'></i>Configuración
             </Link>

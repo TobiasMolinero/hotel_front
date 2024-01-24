@@ -16,7 +16,7 @@ const TablaInicio = () => {
   const getData = async() => {
 
     try {
-      const response = await fetch('http://localhost:3000/reservas', {
+      const response = await fetch('http://localhost:3000/reservas/proximas', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -32,7 +32,7 @@ const TablaInicio = () => {
       logout();
       navigate('/login');
     } else {
-      setTabla(data.results);
+      setTabla(data);
     }
   };
 
@@ -40,6 +40,7 @@ const TablaInicio = () => {
   useEffect(() => {
     getData();
   }, []);
+
 
   return (
     <table className={estilos.table}>

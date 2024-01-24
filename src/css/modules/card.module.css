@@ -1,6 +1,6 @@
 .card{
     height: 120px;
-    width: 350px;
+    width: 270px;
     display: grid;
     grid-template-columns: 60% 40%;
     border-radius: 5px;
