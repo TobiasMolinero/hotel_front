@@ -50,7 +50,7 @@ const Login = () => {
       <div className={estilos.container_login}>
         <div className={estilos.login_intro}>
             <img src={logo} alt="logo" />
-            <h2>Control de Gestión de reservas</h2>
+            <h2>Control de Gestión Hotelera</h2>
         </div>
         <div className={estilos.container_form}>
             <h2>Ingresar al sistema</h2>
