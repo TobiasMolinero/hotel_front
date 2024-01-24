@@ -16,6 +16,7 @@ const Recepcion = () => {
   const token = localStorage.getItem('token');
 
   const [data, setData] = useState([]);
+  const [habitaciones, setHabitaciones] = useState([]);
 
   const getHabitaciones = async() => {
     try {
@@ -36,7 +37,38 @@ const Recepcion = () => {
       navigate('/login');
     } else {
       setData(data);
+      setHabitaciones(data);
     }  
+  }
+
+  const filtrarPorPiso = (e) => {
+    let piso = e.target.value;
+    var filtrado = [];
+
+    switch (piso) {
+      case 0:
+        setHabitaciones(data);
+        break;
+        
+      case 1:
+        filtrado = data.filter(d => d.piso === 'Nivel 1');
+        setHabitaciones(filtrado);
+        break;
+
+      case 2:
+        filtrado = data.filter(d => d.piso === 'Nivel 2');
+        setHabitaciones(filtrado);
+        break;
+
+      case 3:
+        filtrado = data.filter(d => d.piso === 'Nivel 3');
+        setHabitaciones(filtrado);
+        break;
+        
+      default:
+        break;
+    }
+
   }
 
   useEffect(() => {
@@ -51,23 +83,22 @@ const Recepcion = () => {
         <div className="display_recepcion">
           <div className="menu_recepcion">
             <ul>
-              <li>Ver todo</li>
-              <li>Nivel 1</li>
-              <li>Nivel 2</li>
-              <li>Nivel 3</li>
+              <li onClick={filtrarPorPiso} value={0}>Ver todo</li>
+              <li onClick={filtrarPorPiso} value={1}>Nivel 1</li>
+              <li onClick={filtrarPorPiso} value={2}>Nivel 2</li>
+              <li onClick={filtrarPorPiso} value={3}>Nivel 3</li>
             </ul>
           </div>
           <div className="container_cards">
-            {data ? data.map(h => 
+            {habitaciones ? habitaciones.map(h => 
               <CardRoom key={h.id_habitacion}
                         nroHabitacion={h.nro_habitacion}
                         categoria={h.categoria}
                         estado={h.estado_habitacion}
               />                        
             ) 
-            
             : <h2>Ocurrio un error al cargar las habitaciones.</h2>}
-
+            
           </div>
         </div>
       </div>

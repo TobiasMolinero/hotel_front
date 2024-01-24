@@ -32,6 +32,8 @@ const Login = () => {
 
             if(data.auth){
                 login(data.token, data.userData);
+                data.userData.descripcion === 'admin' ? 
+                alert(data.message + '.' + ' Ingresaste como administrador.') : 
                 alert(data.message);
                 navigate('/app/inicio');
                 e.target.reset;

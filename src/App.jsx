@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Inicio from './pages/Inicio';
 import Reservas from './pages/Reservas';
 import Recepcion from './pages/Recepcion';
+import Navbar from './components/Navbar';
 
 function App() {
 
@@ -14,12 +15,15 @@ function App() {
         <Routes>
           <Route path='/' element={<Login />}/>
           <Route path="/login" element={<Login />}/>
+
           <Route path='/app' element={<ProtectedRoute />}>
-            <Route path='/app/inicio' element={<Inicio />} />
+            <Route path='/app/inicio' element={<Inicio />}/>
             <Route path='/app/reservas' element={<Reservas />}/>
-            <Route path='/app/recepcion' element={<Recepcion/>}/>
+            <Route path='/app/recepcion' element={<Recepcion />}/>
           </Route>
+
         </Routes>
+        
       </Router>
   )
 }
