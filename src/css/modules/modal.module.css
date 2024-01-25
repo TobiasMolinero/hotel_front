@@ -1,0 +1,102 @@
+.modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(14, 14, 14, 0.596);
+    display: grid;
+    place-items: center;
+    z-index: 10;
+}
+
+.contenedor{
+    background: #efefef;
+    padding: 5px 10px;
+}
+
+.header_modal{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.header_modal h2, .header_modal i{
+    font-size: 2rem;
+}
+
+.header_modal i{
+    color: #575757;
+    cursor: pointer;
+}
+.header_modal i:hover{
+    color: #161616;
+}
+.header_modal i:active{
+    color: #000;
+}
+
+.body_modal{
+    padding: 10px 40px;
+}
+
+.form{
+    margin-top: 15px;
+}
+
+.group_input{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.group_input label{
+    font-size: 1.4rem;
+    color: #313131;
+    margin-bottom: 2px;
+}
+
+.group_input input, .group_input select{
+    padding: 5px ;
+}
+
+
+.buttons{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.buttons button{
+    padding: 8px 20px;
+    border: none;
+    font-size: 1.5rem;
+    border-radius: 5px;
+}
+
+.button_cancel{
+    background: #555555;
+    color: #efefef;
+    border: none;
+    cursor: pointer;
+}
+
+.button_cancel:hover{
+    background: #3f3f3f;
+}
+.button_cancel:active{
+    background: #555555;
+}
+
+.button_add{
+    background: #0044ff;
+    color: #ebebeb;
+    cursor: pointer;
+}
+.button_add:hover{
+    background: #0033be;
+}
+.button_add:active{
+    background: #0044ff;
+}

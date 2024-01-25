@@ -31,8 +31,8 @@ const Recepcion = () => {
       alert(error);
     }
 
-    if(data.message){
-      alert(data.message);
+    if(data.alert){
+      alert(data.alert);
       logout();
       navigate('/login');
     } else {

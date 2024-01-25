@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 import estilos from '../../css/modules/buttonAdd.module.css';
 
 const ButtonAdd = ({
-    text
+    text,
+    abrirModal
 }) => {
+
+  
+
   return (
     <>
-        <button className={estilos.button}>{text}</button>
+        <button onClick={() => abrirModal(true)} className={estilos.button}>{text}</button>
     </>
   )
 }
