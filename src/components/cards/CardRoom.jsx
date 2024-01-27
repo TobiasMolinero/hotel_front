@@ -4,7 +4,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import estilos from '../../css/modules/cardRoom.module.css';
-import cama from '../../assets/iconos/cama.png';
+import cama from '../../assets/iconos/cama.svg';
 import reloj from '../../assets/iconos/reloj.png';
 import basura from '../../assets/iconos/basura.png';
 import calendario from '../../assets/iconos/calendario.png'

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { useState, useEffect, useDebugValue } from "react";
+import { useState, useEffect } from "react";
 import { logout } from "../../constants/functions";
 import { useNavigate } from "react-router-dom";
 import estilos from '../../css/modules/table.module.css';
@@ -11,7 +11,7 @@ const TablaInicio = () => {
 
   const token = localStorage.getItem('token');
 
-  const [tabla, setTabla] = useState([])
+  const [tabla, setTabla] = useState([]);
 
   const getData = async() => {
 
@@ -27,12 +27,13 @@ const TablaInicio = () => {
       alert(error);
     }
 
+    
     if(data.alert){
       alert(data.alert);
       logout();
       navigate('/login');
     } else {
-      setTabla(data);
+      setTabla(data.results);
     }
   };
 
@@ -49,7 +50,7 @@ const TablaInicio = () => {
           <th>N° Reserva</th>
           <th>Cliente</th>
           <th>N° Habitación</th>
-          <th>Categorìa</th>
+          <th>Categoría</th>
           <th>Piso</th>
           <th>Fecha Ingreso</th>
           <th>Fecha Salida</th>
@@ -71,7 +72,8 @@ const TablaInicio = () => {
               <td>{t.piso}</td>
               <td>{t.fecha_entrada.substring(0, 10)}</td>
               <td>{t.fecha_salida.substring(0, 10)}</td>
-            </tr>)
+            </tr>
+            )
           }
       </tbody>
     </table>

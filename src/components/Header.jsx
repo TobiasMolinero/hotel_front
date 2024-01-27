@@ -20,9 +20,13 @@ const Header = ({
     setUserData(JSON.parse(localStorage.getItem('userData')));
   }
   
-  const showHiddenDropDown = useCallback(() => {
-    dropDown ? setDropDown(false) : setDropDown(true);
-  })
+  const showDropDown = () => {
+    setDropDown(true);
+  }
+
+  const hiddenDropDown = () => {
+    setDropDown(false);
+  }
 
   const cerrarSesion = () => {
     logout();
@@ -38,7 +42,7 @@ const Header = ({
   return (
     <header className={estilos.header}>
       <div >
-        <div className={estilos.boton_usuario} onMouseEnter={showHiddenDropDown} onMouseLeave={showHiddenDropDown}>
+        <div className={estilos.boton_usuario} onMouseEnter={showDropDown} onMouseLeave={hiddenDropDown}>
           {userData ? userData.nombre + ' ' + userData.apellido : ''}
           <i className='bi bi-person-circle'></i>
           <ul hidden={dropDown ? false : true} >

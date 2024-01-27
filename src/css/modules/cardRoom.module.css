@@ -48,3 +48,7 @@
     color: #ebebeb;
     text-decoration: none;
 }
+
+.footer .link:hover{
+    text-decoration-line: underline;
+}

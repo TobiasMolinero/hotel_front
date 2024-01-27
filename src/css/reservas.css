@@ -1,13 +1,16 @@
 .display_reservas{
-    display: grid;
-    place-items: center;
-    min-height: 520px;
+    display: flex;
+    align-items: start;
+    gap: 50px;
+    margin: 0 20px;
+    height: 500px;
+    overflow: auto;
 }
 
 .container_calendar{
     background: #fbfbfb;
     height: 100%;
     width: 800px;
-    padding: 20px;
+    padding: 5px;
     box-shadow: 0 3px 4px #ada9a9;
 }

@@ -37,7 +37,7 @@ const Clientes = () => {
     <div className="app">
       <Navbar />
       {modalAdd ? <ModalAddCliente cerrarModal={cerrarModal}/> : ''}
-      {modalEdit ? <ModalEditCliente cerrarModalEdit={cerrarModalEdit} id={idCliente}/> : ''}
+      {modalEdit ? <ModalEditCliente cerrarModalEdit={cerrarModalEdit} idCliente={idCliente}/> : ''}
       <div className="content clientes">
         <Header nombreIcono={'bi bi-people-fill'} title={'Clientes'}/>
         <div className="display_clientes">

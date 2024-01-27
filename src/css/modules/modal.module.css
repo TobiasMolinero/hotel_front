@@ -56,13 +56,23 @@
     margin-bottom: 2px;
 }
 
-.group_input input, .group_input select{
+.group_input input, 
+.group_input select,
+.group_input textarea{
     padding: 5px ;
+}
+
+.group_input textarea{
+    resize: vertical;
+}
+
+.form p{
+    font-size: 1.2rem;
 }
 
 
 .buttons{
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -99,4 +109,28 @@
 }
 .button_add:active{
     background: #0044ff;
+}
+
+.select_cliente{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.select_cliente i{
+    background-color: #0044ff;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ebebeb;
+    font-size: 2.6rem;
+    cursor: pointer;
+}
+.select_cliente i:hover{
+    background: #0033be;
+}
+.select_cliente i:active{
+    background-color: #0044ff;
 }

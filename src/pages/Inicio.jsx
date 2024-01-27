@@ -32,7 +32,6 @@ const Inicio = () => {
       });
 
       var data = await response.json();
-      console.log(data)
     } catch (error) {
       alert(error.message);
     
@@ -43,9 +42,7 @@ const Inicio = () => {
         logout();
         navigate('/login');
       } else {
-        setDisponibles(data[0].cant || 0);
-        // setReservadas(data[1].cant || 0);
-        // setOcupadas(data[2].cant || 0)
+        setDisponibles(data[0].cant);
       }
 
   }

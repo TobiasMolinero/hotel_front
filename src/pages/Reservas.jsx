@@ -5,11 +5,16 @@ import Navbar from "../components/Navbar";
 import { Calendar, dayjsLocalizer } from "react-big-calendar";
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import dayjs from "dayjs";
+import 'dayjs/locale/es'
 import '../App.css';
 import '../css/reservas.css';
 import { useState, useEffect } from "react";
 import { logout } from "../constants/functions";
 import { useNavigate } from "react-router-dom";
+import ButtonAdd from "../components/buttons/ButtonAdd";
+import ModalAddReserva from "../components/modals/ModalAddReserva";
+
+dayjs.locale('es');
 
 const Reservas = () => {
 
@@ -19,6 +24,16 @@ const Reservas = () => {
 
   const [data, setData] = useState([]);
   const [reservas, setReservas] = useState();
+
+  const [modalAdd, setModalAdd] = useState();
+
+  const abrirModal = (value) => {
+    setModalAdd(value);
+  }
+
+  const cerrarModal = (value) => {
+    setModalAdd(value);
+  }
 
   const getReservas = async() => {
     try {
@@ -55,9 +70,32 @@ const Reservas = () => {
       setReservas(listaReservas);
   };
 
+  const eventStyleGetter = (event) => {
+    let style = {
+      backgroundColor: '#12020', // color por defecto para eventos
+    };
+
+    if (event.start < new Date()) {
+      style.backgroundColor = 'gray'; // Cambia el color para eventos pasados
+    }
+
+    return {
+      style: style
+    };
+  }
+
+
+  const onDoubleClickEvent = () => {
+    alert('Reserva');
+  }
+
   useEffect(() => {
-    getReservas([]);
+    getReservas();
   }, []);
+
+  useEffect(() => {
+    getReservas();
+  }, [modalAdd])
 
   useEffect(() => {
     dibujarCalendario();
@@ -66,9 +104,13 @@ const Reservas = () => {
   return (
     <div className="app">
       <Navbar />
+      {modalAdd ? <ModalAddReserva cerrarModal={cerrarModal}/> : ''}
       <div className="content reservas">
         <Header nombreIcono={'bi-calendar3'} title={'Reservas'}/>
         <div className="display_reservas">
+          <div className="container_button">
+            <ButtonAdd abrirModal={abrirModal} text={'Agregar Reserva'}/>
+          </div>
           <div className="container_calendar">
             <Calendar 
               localizer={localizer} 
@@ -77,6 +119,9 @@ const Reservas = () => {
               style={{
                 fontSize: "1.4rem",
               }}
+              eventPropGetter={eventStyleGetter}
+              popup={true}
+              onDoubleClickEvent={onDoubleClickEvent}
             />
           </div>
         </div>

@@ -6,7 +6,6 @@ import estilos from '../../css/modules/table.module.css';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../constants/functions';
 
-
 const TablaClientes = ({
     abrirModalEdit,
     modalAdd,
@@ -65,8 +64,6 @@ const TablaClientes = ({
         }
     }
 
-
-
     useEffect(() => {
         getData();
     }, [])
@@ -74,7 +71,6 @@ const TablaClientes = ({
     useEffect(() => {
         getData();
     }, [modalAdd, modalEdit])
-
 
     return (
         <table className={estilos.table}>

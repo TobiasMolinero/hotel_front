@@ -16,7 +16,7 @@ const ModalAddCliente = ({
 
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
-    const [tipoDocumento, setTipoDocumento] = useState('');
+    const [tipoDocumento, setTipoDocumento] = useState(1);
     const [nroDocumento, setNroDocumento] = useState('');
     const [telefono, setTelefono] = useState('');
     const [mail, setMail] = useState('');
@@ -103,7 +103,7 @@ const ModalAddCliente = ({
             <form onSubmit={addCliente} className={estilos.form}>
 
                 <div className={estilos.group_input}>
-                    <label htmlFor="inputNombre">Nombre</label>
+                    <label htmlFor="inputNombre">Nombre*</label>
                     <input type="text"
                            id='inputNombre' 
                            onChange={(e)=> 
@@ -113,7 +113,7 @@ const ModalAddCliente = ({
                 </div>
 
                 <div className={estilos.group_input}>
-                    <label htmlFor="inputApellido">Apellido</label>
+                    <label htmlFor="inputApellido">Apellido*</label>
                     <input type="text" 
                            id='inputApellido' 
                            onChange={(e)=> setApellido(e.target.value)} 
@@ -122,7 +122,7 @@ const ModalAddCliente = ({
                 </div>
 
                 <div className={estilos.group_input}>
-                    <label htmlFor='selectTipoDocumento'>Tipo documento</label>
+                    <label htmlFor='selectTipoDocumento'>Tipo documento*</label>
                     <select id="selectTipoDocumento" 
                             defaultValue={1}
                             onChange={(e) => setTipoDocumento(e.target.value)}>
@@ -133,7 +133,7 @@ const ModalAddCliente = ({
                 </div>
 
                 <div className={estilos.group_input}>
-                    <label htmlFor="inputDocumento">N° Documento</label>
+                    <label htmlFor="inputDocumento">N° Documento*</label>
                     <input type="text" 
                            pattern="[0-9]+" 
                            id='inputDocumento' 
@@ -143,7 +143,7 @@ const ModalAddCliente = ({
                 </div>
 
                 <div className={estilos.group_input}>
-                    <label htmlFor="inputTelefono">Telefono</label>
+                    <label htmlFor="inputTelefono">Telefono*</label>
                     <input type="text"
                            pattern="[0-9]+" 
                            id='inputTelefono'
@@ -153,7 +153,7 @@ const ModalAddCliente = ({
                 </div>
 
                 <div className={estilos.group_input}>
-                    <label htmlFor="inputMail">Mail</label>
+                    <label htmlFor="inputMail">Mail*</label>
                     <input type="email" 
                            id="inputMail" 
                            onChange={(e)=> 
@@ -161,6 +161,8 @@ const ModalAddCliente = ({
                            required
                     />
                 </div>
+                
+                <p>* Campos obligatorios.</p>
 
                 <div className={estilos.buttons}>
                     <button className={estilos.button_cancel} 
