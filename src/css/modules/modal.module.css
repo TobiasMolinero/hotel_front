@@ -71,6 +71,19 @@
 }
 
 
+.datos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.datos_cliente, .datos_habitacion{
+    padding: 10px;
+    border: 1px solid #57575748;
+    border-radius: 5px;
+}
+
 .buttons{
     margin-top: 20px;
     display: flex;

@@ -70,6 +70,22 @@
     font-size: 1.4rem;
 }
 
+.group_input i{
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+    color: #666666;
+    cursor: pointer;
+}
+
+.group_input span{
+    font-size: 1.4rem;
+    text-transform: unset;
+}
+
+
 .container_form form button{
     border: none;
     padding: 10px;

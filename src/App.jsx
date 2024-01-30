@@ -7,6 +7,7 @@ import Inicio from './pages/Inicio';
 import Reservas from './pages/Reservas';
 import Recepcion from './pages/Recepcion';
 import Clientes from './pages/Clientes';
+import Usuarios from './pages/Usuarios';
 
 function App() {
 
@@ -21,8 +22,8 @@ function App() {
             <Route path='/app/reservas' element={<Reservas />}/>
             <Route path='/app/recepcion' element={<Recepcion />}/>
             <Route path='/app/clientes' element={<Clientes />}/>
+            <Route path='/app/usuarios' element={<Usuarios />}/>
           </Route>
-
         </Routes>
         
       </Router>

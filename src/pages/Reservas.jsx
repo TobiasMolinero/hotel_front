@@ -13,6 +13,7 @@ import { logout } from "../constants/functions";
 import { useNavigate } from "react-router-dom";
 import ButtonAdd from "../components/buttons/ButtonAdd";
 import ModalAddReserva from "../components/modals/ModalAddReserva";
+import ModalDetalleReserva from "../components/modals/ModalDetalleReserva";
 
 dayjs.locale('es');
 
@@ -24,8 +25,11 @@ const Reservas = () => {
 
   const [data, setData] = useState([]);
   const [reservas, setReservas] = useState();
+  const [nroReserva, setNroReserva] = useState();
 
-  const [modalAdd, setModalAdd] = useState();
+  const [modalAdd, setModalAdd] = useState(false);
+  const [modalDetalle, setModalDetalle] = useState(false);
+
 
   const abrirModal = (value) => {
     setModalAdd(value);
@@ -33,6 +37,14 @@ const Reservas = () => {
 
   const cerrarModal = (value) => {
     setModalAdd(value);
+  }
+
+  const abrirModalDetalle = () => {
+    setModalDetalle(true)
+  }
+
+  const cerrarModalDetalle = (value) => {
+    setModalDetalle(value)
   }
 
   const getReservas = async() => {
@@ -64,7 +76,8 @@ const Reservas = () => {
           start: dayjs(element.fecha_entrada).toDate(),
           end: dayjs(element.fecha_salida).toDate(),
           title: `Hab. ${element.nro_habitacion} - ${element.categoria}, ${element.nombre + ' ' + 
-                  element.apellido}, DNI: ${element.nro_documento}`
+                  element.apellido}, DNI: ${element.nro_documento}`,
+          nro_reserva: element.nro_reserva
         })
       });
       setReservas(listaReservas);
@@ -85,8 +98,9 @@ const Reservas = () => {
   }
 
 
-  const onDoubleClickEvent = () => {
-    alert('Reserva');
+  const onDoubleClickEvent = (evento) => {
+    setNroReserva(evento.nro_reserva);
+    abrirModalDetalle();
   }
 
   useEffect(() => {
@@ -105,6 +119,7 @@ const Reservas = () => {
     <div className="app">
       <Navbar />
       {modalAdd ? <ModalAddReserva cerrarModal={cerrarModal}/> : ''}
+      {modalDetalle ? <ModalDetalleReserva cerrarModal={cerrarModalDetalle} nroReserva={nroReserva}/> : ''}
       <div className="content reservas">
         <Header nombreIcono={'bi-calendar3'} title={'Reservas'}/>
         <div className="display_reservas">

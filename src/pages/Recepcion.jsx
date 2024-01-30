@@ -83,10 +83,10 @@ const Recepcion = () => {
         <div className="display_recepcion">
           <div className="menu_recepcion">
             <ul>
-              <li onClick={filtrarPorPiso} value={0}>Ver todo</li>
-              <li onClick={filtrarPorPiso} value={1}>Nivel 1</li>
-              <li onClick={filtrarPorPiso} value={2}>Nivel 2</li>
-              <li onClick={filtrarPorPiso} value={3}>Nivel 3</li>
+              <li onClick={filtrarPorPiso} value={0} >Ver todo</li>
+              <li onClick={filtrarPorPiso} value={1} >Nivel 1</li>
+              <li onClick={filtrarPorPiso} value={2} >Nivel 2</li>
+              <li onClick={filtrarPorPiso} value={3} >Nivel 3</li>
             </ul>
           </div>
           <div className="container_cards">

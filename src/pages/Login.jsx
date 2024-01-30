@@ -2,16 +2,19 @@
 /* eslint-disable no-unused-vars */
 import estilos from '../css/modules/login.module.css';
 import logo from '../assets/logo_hotel.png';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../constants/functions';
 
 const Login = () => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const checkbox = useRef();
 
     const [usuario, setUsuario] = useState('');
     const [clave, setClave] = useState('');
+
+    const [visible, setVisible] = useState(false);
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -47,6 +50,10 @@ const Login = () => {
 
     };
 
+    const changeVisibility = () => {
+        visible ? setVisible(false) : setVisible(true);
+    }
+
   return (
     <div className={estilos.container}>
       <div className={estilos.container_login}>
@@ -63,11 +70,14 @@ const Login = () => {
                         setUsuario(e.target.value)
                     }} required autoComplete='off'/>
                 </div>
-                <div className={estilos.group_input}>
+                <div className={estilos.group_input} >
                     <label htmlFor="txtContraseña">Contraseña</label>
-                    <input type="password" id="txtContraseña" onChange={(e) => {
+                    <input type={visible ? 'text' : 'password'} id="txtContraseña" onChange={(e) => {
                         setClave(e.target.value)
                     }} required autoComplete='off'/>
+                    <i onClick={changeVisibility} className={visible ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'}>
+                        <span>{visible ? 'Ocultar' : 'Mostrar'} contraseña</span>
+                    </i>
                 </div>
                 <button type='submit'>Ingresar</button>
             </form>
