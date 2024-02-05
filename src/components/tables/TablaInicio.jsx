@@ -23,6 +23,7 @@ const TablaInicio = () => {
         }
       });
       var data = await response.json();
+      console.log(data)
     } catch (error) {
       alert(error);
     }
@@ -33,7 +34,7 @@ const TablaInicio = () => {
       logout();
       navigate('/login');
     } else {
-      setTabla(data.results);
+      setTabla(data);
     }
   };
 

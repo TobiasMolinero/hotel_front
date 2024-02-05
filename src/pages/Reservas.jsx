@@ -87,8 +87,12 @@ const Reservas = () => {
     let style = {
       backgroundColor: '#12020', // color por defecto para eventos
     };
+    
+    if (event.start < new Date() && event.end > new Date()) {
+      style.backgroundColor = 'green'; // Cambia el color para eventos pasados
+    }
 
-    if (event.start < new Date()) {
+    if (event.start < new Date() && event.end < new Date()) {
       style.backgroundColor = 'gray'; // Cambia el color para eventos pasados
     }
 
