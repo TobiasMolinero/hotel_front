@@ -142,7 +142,7 @@ const ModalAddReserva = ({
 
                 <div className={estilos.group_input}>
                   <label htmlFor="selectCliente">Huesped*</label>
-                  <div className={estilos.select_cliente}>
+                  <div className={estilos.select_and_plus}>
                     <select id="selectCliente" onChange={(e) => setCliente(e.target.value)}>
                       <option value='selected'>-- Seleccione el huesped --</option>
                       {listaClientes.map(c => 

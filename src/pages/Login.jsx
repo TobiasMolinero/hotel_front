@@ -5,6 +5,7 @@ import logo from '../assets/logo_hotel.png';
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../constants/functions';
+import { success } from '../constants/alerts.js';
 
 const Login = () => {
 
@@ -36,8 +37,12 @@ const Login = () => {
             if(data.auth){
                 login(data.token, data.userData);
                 data.userData.descripcion === 'admin' ? 
-                alert(data.message + '. ' + 'Ingresaste como administrador.') : 
-                alert(data.message);
+                success.fire({
+                    text: data.message + '. ' + 'Ingresaste como administrador.'
+                }) 
+                : success.fire({
+                    text: data.message
+                }); 
                 navigate('/app/inicio');
                 e.target.reset;
             } else {

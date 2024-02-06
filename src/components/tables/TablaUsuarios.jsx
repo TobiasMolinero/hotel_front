@@ -40,8 +40,28 @@ const TablaUsuarios = ({
     }
 
     const deleteUsuario = async(id) => {
-
+      try {
+        const response = await fetch(`http://localhost:3000/usuarios/delete/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        const data = await response.json();
+        if(data.alert){
+          alert(data.alert);
+          logout();
+          navigate('/login');
+        } else {
+          alert(data.message);
+          getUsuarios();
+        }
+      } catch (error) {
+        alert(error);
+      }
     }
+
 
     useEffect(() => {
       getUsuarios();
@@ -75,7 +95,6 @@ const TablaUsuarios = ({
                 <i className='bi bi-trash-fill'></i>
             </button>
             </td>
-
           </tr>  
         )  
       }

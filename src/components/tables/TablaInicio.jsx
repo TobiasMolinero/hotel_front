@@ -8,7 +8,6 @@ import estilos from '../../css/modules/table.module.css';
 const TablaInicio = () => {
 
   const navigate = useNavigate();
-
   const token = localStorage.getItem('token');
 
   const [tabla, setTabla] = useState([]);
@@ -34,7 +33,7 @@ const TablaInicio = () => {
       logout();
       navigate('/login');
     } else {
-      setTabla(data);
+      setTabla(data.results);
     }
   };
 

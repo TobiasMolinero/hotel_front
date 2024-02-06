@@ -124,14 +124,14 @@
     background: #0044ff;
 }
 
-.select_cliente{
+.select_and_plus{
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
 
-.select_cliente i{
+.select_and_plus i{
     background-color: #0044ff;
     border: none;
     display: flex;
@@ -141,9 +141,9 @@
     font-size: 2.6rem;
     cursor: pointer;
 }
-.select_cliente i:hover{
+.select_and_plus i:hover{
     background: #0033be;
 }
-.select_cliente i:active{
+.select_and_plus i:active{
     background-color: #0044ff;
 }

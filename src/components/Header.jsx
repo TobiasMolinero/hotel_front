@@ -2,9 +2,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import estilos from '../css/modules/header.module.css'
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { logout } from '../constants/functions';
 import { useNavigate } from 'react-router-dom';
+import { confirmar } from '../constants/alerts';
 
 const Header = ({
     nombreIcono,
@@ -29,9 +30,17 @@ const Header = ({
   }
 
   const cerrarSesion = () => {
-    logout();
-    navigate('/login');
-    alert('Sesión cerrada');
+    confirmar.fire({
+      title: '¡ATENCIÓN!',
+      text: '¿Está seguro que desea cerrar la sesión?'
+    }).then((result) => {
+      if(result.isConfirmed){
+        logout();
+        navigate('/login');
+      } else {
+        return null
+      }
+    })
   }
 
   useEffect(() => {

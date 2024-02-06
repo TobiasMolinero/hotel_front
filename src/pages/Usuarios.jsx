@@ -36,7 +36,7 @@ const Usuarios = () => {
       <Navbar />
       {modalAdd ? <ModalAddUsuario cerrarModal={cerrarModal}/> : ''}
       <div className="content usuarios">
-        <Header nombreIcono={'bi bi-person-fill-gear'} title={'Usuarios'}/>
+        <Header nombreIcono={'bi bi-person-fill-gear'} title={'Usuarios del sistema'}/>
         <div className="display_usuarios">
           <div className="container_button">
             <ButtonAdd abrirModal={abrirModal} text={'Registrar Usuario'}/>
