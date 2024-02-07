@@ -8,7 +8,7 @@ export const success = Swal.mixin({
     confirmButtonText: 'Continuar',
     confirmButtonColor: '#020120',
     showCancelButton: false,
-    showCloseButton: true,
+    showCloseButton: false,
     reverseButtons: true,
     timer: 3000,
     timerProgressBar: true,
@@ -26,6 +26,7 @@ export const success = Swal.mixin({
 
 export const confirmar = Swal.mixin({
     icon: 'question',
+    showCloseButton: false,
     showCancelButton: true,
     cancelButtonColor: '#bbb',
     cancelButtonText: 'Cancelar',
@@ -45,6 +46,7 @@ export const confirmar = Swal.mixin({
 
 export const error = Swal.mixin({
     icon: 'error',
+    showCloseButton: false,
     showConfirmButton: true,
     confirmButtonColor: '#020120',
     confirmButtonText: 'Continuar',
@@ -62,6 +64,7 @@ export const error = Swal.mixin({
 
 export const warning =  Swal.mixin({
     icon: 'warning',
+    showCloseButton: false,
     showConfirmButton: true,
     confirmButtonColor: '#020120',
     confirmButtonText: 'Continuar',

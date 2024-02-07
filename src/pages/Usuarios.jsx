@@ -7,6 +7,7 @@ import Header from '../components/Header';
 import ButtonAdd from '../components/buttons/ButtonAdd';
 import TablaUsuarios from '../components/tables/TablaUsuarios';
 import ModalAddUsuario from '../components/modals/ModalAddUsuario';
+import ModalEditUsuario from '../components/modals/ModalEditUsuario';
 
 const Usuarios = () => {
 
@@ -35,6 +36,7 @@ const Usuarios = () => {
     <div className="app">
       <Navbar />
       {modalAdd ? <ModalAddUsuario cerrarModal={cerrarModal}/> : ''}
+      {modalEdit ? <ModalEditUsuario cerrarModal={cerrarModalEdit} idUsuario={idUsuario}/> : ''}
       <div className="content usuarios">
         <Header nombreIcono={'bi bi-person-fill-gear'} title={'Usuarios del sistema'}/>
         <div className="display_usuarios">
