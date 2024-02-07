@@ -5,6 +5,7 @@ import {useState, useEffect, useRef} from 'react';
 import estilos from '../../css/modules/modal.module.css';
 import { logout } from '../../constants/functions';
 import { useNavigate } from 'react-router-dom';
+import { warning, success } from '../../constants/alerts';
 
 const ModalEditCliente = ({
     cerrarModalEdit,
@@ -33,7 +34,9 @@ const ModalEditCliente = ({
             });
             const data = await response.json();
             if(data.alert){
-                alert(data.alert);
+                await warning.fire({
+                    text: data.alert
+                });
                 logout();
                 navigate('/login');
             } else {
@@ -59,18 +62,20 @@ const ModalEditCliente = ({
             })
     
             var data = await response.json();
+            if(data.alert){
+                await warning.fire({
+                    text: data.alert
+                });
+                logout();
+                navigate('/login');
+            } else {
+                setListaTipoDocumento(data);
+                setTipoDocumento(data[0].id_tipo_documento)
+            }
         } catch (error) {
             alert(error);
         }
 
-        if(data.alert){
-            alert(data.alert);
-            logout();
-            navigate('/login');
-        } else {
-            setListaTipoDocumento(data);
-            setTipoDocumento(data[0].id_tipo_documento)
-        }
     }
 
     const editCliente = async (e) => {
@@ -93,17 +98,20 @@ const ModalEditCliente = ({
                 })
             });
             var data = await response.json();
-            console.log(data)
+            if(data.alert){
+                await warning.fire({
+                    text: data.alert
+                });
+                logout();
+                navigate('/login');
+            } else {
+                await success.fire({
+                    text: data.message
+                });
+                cerrarModalEdit(false);
+            }
         } catch (error) {
             alert(error);
-        }
-        if(data.alert){
-            alert(data.alert);
-            logout();
-            navigate('/login');
-        } else {
-            alert(data.message);
-            cerrarModalEdit(false);
         }
     }
 

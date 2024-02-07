@@ -6,6 +6,7 @@ import estilos from  '../../css/modules/modal.module.css';
 import ModalAddCliente from './ModalAddCliente';
 import { logout } from '../../constants/functions';
 import { useNavigate } from 'react-router-dom';
+import { warning, success } from '../../constants/alerts';
 
 const ModalAddReserva = ({
     cerrarModal
@@ -43,17 +44,19 @@ const ModalAddReserva = ({
       });
 
       var data = await response.json();
+      if(data.alert){
+        await warning.fire({
+          text: data.alert
+        });
+        logout();
+        navigate('/login');
+      } else {
+        setListaClientes(data);
+      }
     } catch (error){
       alert(error);
     }
 
-    if(data.alert){
-      alert(data.alert);
-      logout();
-      navigate('/login');
-    } else {
-      setListaClientes(data);
-    }
   }
 
   const getHabitaciones = async() => {
@@ -66,23 +69,28 @@ const ModalAddReserva = ({
       });
 
       var data = await response.json();
+      if(data.alert){
+        await warning.fire({
+          text: data.alert
+        });
+        logout();
+        navigate('/login');
+      } else {
+        setListaHabitaciones(data);
+      }
     } catch (error) {
       alert(error)
     }
 
-    if(data.alert){
-      alert(data.alert);
-      logout();
-      navigate('/login');
-    } else {
-      setListaHabitaciones(data);
-    }
   }
 
   const addReserva = async(e) => {
     e.preventDefault();
     if(cliente === 'selected' && habitacion === 'selected'){
-      alert('Debe seleccionar una habitacion y un cliente.')
+      await warning.fire({
+        title: 'Atencion!',
+        text: 'Debe seleccionar una habitacion y un cliente.'
+      })
     } else {
       try {
         const response = await fetch('http://localhost:3000/reservas/add', {
@@ -101,21 +109,22 @@ const ModalAddReserva = ({
         });
   
         var data = await response.json();
-  
+        if(data.alert){
+          await warning.fire({
+            text: data.alert
+          });
+          logout();
+          navigate('/login');
+        } else {
+          await success.fire({
+            text: data.message
+          });
+          cerrarModal(false);
+        }
       } catch (error) {
         alert(error)
       }
-  
-      if(data.alert){
-        alert(data.alert);
-        logout();
-        navigate('/login');
-      } else {
-        alert(data.message);
-        cerrarModal(false);
-      }
     }
-
   }
 
 

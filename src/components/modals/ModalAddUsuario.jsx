@@ -6,6 +6,7 @@ import {useState, useEffect} from 'react';
 import { logout } from '../../constants/functions';
 import { useNavigate } from 'react-router-dom';
 import estilos from '../../css/modules/modal.module.css';
+import { success, warning } from '../../constants/alerts';
 
 
 const ModalAddUsuario = ({
@@ -42,17 +43,20 @@ const ModalAddUsuario = ({
                 })
             });
             let data = await response.json();
-            console.log(data)
             if(data.alert){
-                alert(data.alert);
+                await warning.fire({
+                    title: data.alert
+                });
                 logout();
                 navigate('/login');
             } else {
-                alert(data.message);
+                await success.fire({
+                    text: data.message
+                });
+                cerrarModal();
             }
         } catch (error) {
             alert(error);
-            cerrarModal();
         }
     }
 
@@ -67,7 +71,9 @@ const ModalAddUsuario = ({
 
             let data = await response.json();
             if(data.alert){
-                alert(data.alert);
+                await warning.fire({
+                    text: data.alert
+                });
                 logout();
                 navigate('/login');
             } else {
@@ -89,7 +95,9 @@ const ModalAddUsuario = ({
 
             let data = await response.json();
             if(data.alert){
-                alert(data.alert);
+                await warning.fire({
+                    text: data.alert
+                });
                 logout();
                 navigate('/login')
             } else {

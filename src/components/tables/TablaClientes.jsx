@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react'
 import estilos from '../../css/modules/table.module.css';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../constants/functions';
+import { confirmar, success, warning } from '../../constants/alerts';
 
 const TablaClientes = ({
     abrirModalEdit,
@@ -42,25 +43,37 @@ const TablaClientes = ({
 
     const deleteCliente = async(id) => {
         try {
-            const response = await fetch(`http://localhost:3000/clientes/delete/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+            await confirmar.fire({
+                title: 'Eliminar cliente',
+                text: '¿Está seguro que desea dar de baja este cliente?'
+            }).then(async(result) =>{
+                if(result.isConfirmed){
+                    const response = await fetch(`http://localhost:3000/clientes/delete/${id}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    var data = await response.json();
+                    if(data.alert){
+                        await warning.fire({
+                            text: data.alert
+                        });
+                        logout();
+                        navigate('/login');
+                    } else {
+                        await success.fire({
+                            text: data.message
+                        });
+                        getData();
+                    }
+                } else {
+                    return null;
                 }
             })
-            var data = await response.json();
         } catch (error) {
            alert(error); 
-        }
-
-        if(data.alert){
-            alert(data.alert);
-            logout();
-            navigate('/login');
-        } else {
-            alert(data.message);
-            getData();
         }
     }
 

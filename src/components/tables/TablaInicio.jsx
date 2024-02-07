@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { logout } from "../../constants/functions";
 import { useNavigate } from "react-router-dom";
 import estilos from '../../css/modules/table.module.css';
+import { warning } from "../../constants/alerts";
 
 const TablaInicio = () => {
 
@@ -22,18 +23,17 @@ const TablaInicio = () => {
         }
       });
       var data = await response.json();
-      console.log(data)
+      if(data.alert){
+        await warning.fire({
+          text: data.alert
+        });
+        logout();
+        navigate('/login');
+      } else {
+        setTabla(data.results);
+      }
     } catch (error) {
       alert(error);
-    }
-
-    
-    if(data.alert){
-      alert(data.alert);
-      logout();
-      navigate('/login');
-    } else {
-      setTabla(data.results);
     }
   };
 

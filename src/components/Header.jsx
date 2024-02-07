@@ -5,7 +5,7 @@ import estilos from '../css/modules/header.module.css'
 import { useState, useEffect } from 'react';
 import { logout } from '../constants/functions';
 import { useNavigate } from 'react-router-dom';
-import { confirmar } from '../constants/alerts';
+import { confirmar, success } from '../constants/alerts';
 
 const Header = ({
     nombreIcono,
@@ -33,8 +33,11 @@ const Header = ({
     confirmar.fire({
       title: '¡ATENCIÓN!',
       text: '¿Está seguro que desea cerrar la sesión?'
-    }).then((result) => {
+    }).then(async(result) => {
       if(result.isConfirmed){
+        await success.fire({
+          text: 'La cesión finalizó con exito.'
+        })
         logout();
         navigate('/login');
       } else {

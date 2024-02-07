@@ -5,6 +5,7 @@ import {useState, useEffect} from 'react';
 import estilos from '../../css/modules/modal.module.css';
 import { logout } from '../../constants/functions';
 import { useNavigate } from 'react-router-dom';
+import { success, warning } from '../../constants/alerts';
 
 const ModalAddCliente = ({
     cerrarModal
@@ -45,23 +46,26 @@ const ModalAddCliente = ({
                 })
             })
             var data = await response.json();
+            if(data.alert){
+                await warning.fire({
+                    text: data.alert
+                });
+                logout();
+                navigate('/login');
+            } else {
+                await success.fire({
+                    text: data.message
+                });
+                cerrarModal(false);
+            }
         } catch (error) {
             alert(error);
         }
 
-        if(data.alert){
-            alert(data.alert);
-            logout();
-            navigate('/login');
-        } else {
-            alert(data.message);
-            cerrarModal(false);
-        }
     }
 
 
     const getTipoDocumento = async() => {
-
         try {
             const response = await fetch('http://localhost:3000/clientes/tiposDocumento',{
                 headers: {
@@ -69,19 +73,19 @@ const ModalAddCliente = ({
                     'Authorization': `Bearer ${token}`
                 }
             })
-    
             var data = await response.json();
+            if(data.alert){
+                await warning.fire({
+                    text: data.alert
+                });
+                logout();
+                navigate('/login');
+            } else {
+                setListaTipoDocumento(data);
+                setTipoDocumento(data[0].id_tipo_documento)
+            }
         } catch (error) {
             alert(error);
-        }
-
-        if(data.alert){
-            alert(data.alert);
-            logout();
-            navigate('/login');
-        } else {
-            setListaTipoDocumento(data);
-            setTipoDocumento(data[0].id_tipo_documento)
         }
     }
 

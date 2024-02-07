@@ -1,15 +1,15 @@
-.title{
+.alert-title{
     font-size: 1.8rem !important;
 }
 
-.text{
+.alert-text{
     font-size: 1.6rem !important;
 }
 
-.button{
+.alert-button{
     font-size: 1.4rem !important;
 }
 
-.button:focus{
+.alert-button:focus{
     box-shadow: none !important;
 }

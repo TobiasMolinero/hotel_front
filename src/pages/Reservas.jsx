@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import ButtonAdd from "../components/buttons/ButtonAdd";
 import ModalAddReserva from "../components/modals/ModalAddReserva";
 import ModalDetalleReserva from "../components/modals/ModalDetalleReserva";
+import { warning } from "../constants/alerts";
 
 dayjs.locale('es');
 
@@ -56,17 +57,18 @@ const Reservas = () => {
         }
       });
       var data = await response.json();
+      if(data.alert){
+        await warning.fire({
+          text: data.alert
+        });
+        logout();
+        navigate('/login');
+      } else {
+        setData(data.results);
+      }  
     } catch (error) {
       alert(error);
     }
-
-    if(data.alert){
-      alert(data.alert);
-      logout();
-      navigate('/login');
-    } else {
-      setData(data.results);
-    }  
   };
 
   const dibujarCalendario = () => {
@@ -100,7 +102,6 @@ const Reservas = () => {
       style: style
     };
   }
-
 
   const onDoubleClickEvent = (evento) => {
     setNroReserva(evento.nro_reserva);

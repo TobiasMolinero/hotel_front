@@ -15,11 +15,11 @@ export const success = Swal.mixin({
     focusConfirm: false,
     focusCancel: false,
     customClass: {
-        title: 'title',
-        htmlContainer: 'text',
-        confirmButton: 'button',
-        cancelButton: 'button',
-        denyButton: 'button'
+        title: 'alert-title',
+        htmlContainer: 'alert-text',
+        confirmButton: 'alert-button',
+        cancelButton: 'alert-button',
+        denyButton: 'alert-button'
     },
     padding: '10px'
 });
@@ -34,11 +34,45 @@ export const confirmar = Swal.mixin({
     confirmButtonText: 'Confirmar',
     reverseButtons: true,
     customClass: {
-        title: 'itle',
-        htmlContainer: 'text',
-        confirmButton: 'button',
-        cancelButton: 'button',
-        denyButton: 'button'
+        title: 'alert-title',
+        htmlContainer: 'alert-text',
+        confirmButton: 'alert-button',
+        cancelButton: 'alert-button',
+        denyButton: 'alert-button'
+    },
+    padding: '10px'
+})
+
+export const error = Swal.mixin({
+    icon: 'error',
+    showConfirmButton: true,
+    confirmButtonColor: '#020120',
+    confirmButtonText: 'Continuar',
+    timer: 3000,
+    timerProgressBar: true,
+    customClass: {
+        title: 'alert-title',
+        htmlContainer: 'alert-text',
+        confirmButton: 'alert-button',
+        cancelButton: 'alert-button',
+        denyButton: 'alert-button'
+    },
+    padding: '10px'
+})
+
+export const warning =  Swal.mixin({
+    icon: 'warning',
+    showConfirmButton: true,
+    confirmButtonColor: '#020120',
+    confirmButtonText: 'Continuar',
+    timer: 3000,
+    timerProgressBar: true,
+    customClass: {
+        title: 'alert-title',
+        htmlContainer: 'alert-text',
+        confirmButton: 'alert-button',
+        cancelButton: 'alert-button',
+        denyButton: 'alert-button'
     },
     padding: '10px'
 })
