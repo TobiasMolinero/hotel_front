@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
@@ -6,11 +7,14 @@ import estilos from '../../css/modules/table.module.css';
 import { logout } from '../../constants/functions';
 import { useNavigate } from 'react-router-dom';
 import { confirmar, success, warning } from '../../constants/alerts';
+import ModalChangePassword from '../modals/ModalChangePassword';
 
 const TablaUsuarios = ({
   abrirModalEdit,
+  abrirModalPassword,
   modalAdd,
-  modalEdit
+  modalEdit,
+  modalPassword
 }) => {
 
   const navigate = useNavigate();
@@ -79,7 +83,7 @@ const TablaUsuarios = ({
 
   useEffect(() => {
     getUsuarios();
-  }, [modalAdd, modalEdit])
+  }, [modalAdd, modalEdit, modalPassword])
 
 
   return (
@@ -102,11 +106,14 @@ const TablaUsuarios = ({
               <td>{u.nombre + ' ' + u.apellido}</td>
               <td>{u.descripcion}</td>
               <td className={estilos.column_action}>
-                <button onClick={() => abrirModalEdit(u.id_usuario, true)} className={estilos.button_edit}>
+                <button onClick={() => abrirModalEdit(u.id_usuario, true)} className={estilos.button_edit} title='Editar Usuario'>
                   <i className='bi bi-pencil-square'></i>
                 </button>
-                <button onClick={() => deleteUsuario(u.id_usuario)} className={estilos.button_delete}>
+                <button onClick={() => deleteUsuario(u.id_usuario)} className={estilos.button_delete} title='Eliminar Usuario'>
                   <i className='bi bi-trash-fill'></i>
+                </button>
+                <button onClick={() => abrirModalPassword(u.id_usuario, true)} className={estilos.button_password} title='Cambiar contraseña'>
+                  <i className='bi bi-lock-fill'></i>
                 </button>
               </td>
             </tr>

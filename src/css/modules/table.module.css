@@ -37,25 +37,28 @@
     gap: 5px;
 }
 
-.button_edit{
+.button_edit, .button_delete, .button_password{
     text-align: center;
-    background: rgb(212, 212, 0);
     padding: 5px 10px;
     border: none;
     cursor: pointer;
     font-size: 1.6rem;
+}
+
+.button_edit{
+    background: rgb(212, 212, 0);
 }
 
 .button_delete{
-    text-align: center;
     background: rgb(200, 0, 0);
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 1.6rem;
 }
 
-.button_edit i, .button_delete i{
+
+.button_password{
+    background: rgb(136, 136, 136);
+}
+
+.button_edit i, .button_delete i, .button_password i{
     display: grid;
     place-items: center;
 }
@@ -67,5 +70,10 @@
 
 .button_delete:hover{
     background: rgb(228, 0, 0);
+    
+}
+
+.button_password:hover{
+    background: rgb(155, 155, 155);
     
 }

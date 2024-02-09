@@ -10,7 +10,7 @@ export const success = Swal.mixin({
     showCancelButton: false,
     showCloseButton: false,
     reverseButtons: true,
-    timer: 3000,
+    timer: 2000,
     timerProgressBar: true,
     focusConfirm: false,
     focusCancel: false,

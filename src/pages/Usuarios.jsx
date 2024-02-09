@@ -8,11 +8,13 @@ import ButtonAdd from '../components/buttons/ButtonAdd';
 import TablaUsuarios from '../components/tables/TablaUsuarios';
 import ModalAddUsuario from '../components/modals/ModalAddUsuario';
 import ModalEditUsuario from '../components/modals/ModalEditUsuario';
+import ModalChangePassword from '../components/modals/ModalChangePassword';
 
 const Usuarios = () => {
 
   const[modalAdd, setModalAdd] = useState();
   const [modalEdit, setModalEdit] = useState();
+  const [modalPassword, setModalPassword] = useState();
   const [idUsuario, setIdUsuario] = useState();
 
   const abrirModal = (value) => {
@@ -32,11 +34,21 @@ const Usuarios = () => {
     setModalEdit(value);
   }
 
+  const abrirModalPassword = (id, value) => {{
+    setIdUsuario(id);
+    setModalPassword(value);
+  }}
+
+  const cerrarModalPassword = (value) => {
+    setModalPassword(value);
+  }
+
   return (
     <div className="app">
       <Navbar />
       {modalAdd ? <ModalAddUsuario cerrarModal={cerrarModal}/> : ''}
       {modalEdit ? <ModalEditUsuario cerrarModal={cerrarModalEdit} idUsuario={idUsuario}/> : ''}
+      {modalPassword ? <ModalChangePassword cerrarModal={cerrarModalPassword} idUsuario={idUsuario}/> : ''}
       <div className="content usuarios">
         <Header nombreIcono={'bi bi-person-fill-gear'} title={'Usuarios del sistema'}/>
         <div className="display_usuarios">
@@ -44,7 +56,12 @@ const Usuarios = () => {
             <ButtonAdd abrirModal={abrirModal} text={'Registrar Usuario'}/>
           </div>
           <div className="container_tabla">
-            <TablaUsuarios abrirModalEdit={abrirModalEdit} modalAdd={modalAdd} modalEdit={modalEdit}/>
+            <TablaUsuarios abrirModalEdit={abrirModalEdit} 
+                           abrirModalPassword={abrirModalPassword} 
+                           modalAdd={modalAdd} 
+                           modalEdit={modalEdit}
+                           modalPassword={modalPassword}
+            />
           </div>
         </div>
       </div>

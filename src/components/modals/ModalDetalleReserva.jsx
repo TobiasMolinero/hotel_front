@@ -59,7 +59,7 @@ const ModalDetalleReserva = ({
                     <h4>Nombre completo</h4>
                 </div>
                 <div className={estilos.datos_habitacion}>
-                    <h2>Datos de la habitación</h2>
+                    <h2>Datos de la reserva</h2>
 
                 </div>
             </div>

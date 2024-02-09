@@ -5,12 +5,11 @@ import logo from '../assets/logo_hotel.png';
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../constants/functions';
-import { success } from '../constants/alerts.js';
+import { success, error } from '../constants/alerts.js';
 
 const Login = () => {
 
     const navigate = useNavigate();
-    const checkbox = useRef();
 
     const [usuario, setUsuario] = useState('');
     const [clave, setClave] = useState('');
@@ -37,20 +36,24 @@ const Login = () => {
             if(data.auth){
                 login(data.token, data.userData);
                 data.userData.descripcion === 'admin' ? 
-                success.fire({
+                await success.fire({
                     text: data.message + '. ' + 'Ingresaste como administrador.'
                 }) 
-                : success.fire({
+                : await success.fire({
                     text: data.message
                 }); 
                 navigate('/app/inicio');
                 e.target.reset;
             } else {
-                alert(data.message);
+                await error.fire({
+                    text: data.message
+                });
             }
             
-        } catch (error) {
-            alert(data.error);
+        } catch (err) {
+            await error.fire({
+                text: err.message
+            })
         }
 
     };
