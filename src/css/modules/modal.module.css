@@ -23,6 +23,7 @@
 
 .header_modal h2, .header_modal i{
     font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 .header_modal i{
@@ -74,7 +75,7 @@
 .datos{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     gap: 10px;
 }
 
@@ -82,6 +83,14 @@
     padding: 10px;
     border: 1px solid #57575748;
     border-radius: 5px;
+}
+
+.datos_cliente h2, .datos_habitacion h2{
+    font-size: 1.8rem;
+}
+
+.datos_habitacion{
+    width: 250px;
 }
 
 .buttons{
@@ -146,4 +155,19 @@
 }
 .select_and_plus i:active{
     background-color: #0044ff;
+}
+
+.group_data{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.group_data h4{
+    font-size: 1.4rem;
+}
+
+.group_data p{
+    font-size: 1.2rem;
 }

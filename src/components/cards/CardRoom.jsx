@@ -7,7 +7,7 @@ import estilos from '../../css/modules/cardRoom.module.css';
 import cama from '../../assets/iconos/cama.svg';
 import reloj from '../../assets/iconos/reloj.png';
 import basura from '../../assets/iconos/basura.png';
-import calendario from '../../assets/iconos/calendario.png'
+// import calendario from '../../assets/iconos/calendario.png'
 
 const CardRoom = ({
   nroHabitacion,
@@ -47,10 +47,11 @@ const CardRoom = ({
     } else if(estado === 'Limpieza'){
       setBackground(colores.background.azul);
       setFooterCard(colores.footer.azul);
-    } else if(estado === 'Reservado'){
-      setBackground(colores.background.azul2);
-      setFooterCard(colores.footer.azul2);
-    }
+    } 
+    // else if(estado === 'Reservado'){
+    //   setBackground(colores.background.azul2);
+    //   setFooterCard(colores.footer.azul2);
+    // }
   }
 
   const setIconoCard = () => {
@@ -60,9 +61,10 @@ const CardRoom = ({
       setIcono(reloj);
     } else if(estado === 'Limpieza'){
       setIcono(basura);
-    } else if(estado === 'Reservado'){
-      setIcono(calendario);
-    }
+    } 
+    // else if(estado === 'Reservado'){
+    //   setIcono(calendario);
+    // }
   }
 
   useEffect(() => {
@@ -81,7 +83,7 @@ const CardRoom = ({
         </div>
         <div className={estilos.footer} style={{backgroundColor: footerCard}}>
             <p>
-                <Link className={estilos.link}>{estado}<i className="bi bi-arrow-right-circle-fill" style={{marginLeft: '5px'}}></i></Link>
+                <Link to={`/app/recepcion/${nroHabitacion}`} className={estilos.link}>{estado}<i className="bi bi-arrow-right-circle-fill" style={{marginLeft: '5px'}}></i></Link>
             </p>
         </div>
     </div>

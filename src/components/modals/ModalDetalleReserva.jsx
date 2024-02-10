@@ -27,17 +27,17 @@ const ModalDetalleReserva = ({
             });
             var data = await response.json();
             console.log(data)
+            if(data.alert){
+                alert(data.alert);
+                logout();
+                navigate('/login');
+            } else {
+                setReserva(data);
+            }
         } catch (error) {
             alert(error)
         }
 
-        if(data.alert){
-            alert(data.alert);
-            logout();
-            navigate('/login');
-        } else {
-            setReserva(data);
-        }
     }
 
     useEffect(() => {
@@ -55,19 +55,70 @@ const ModalDetalleReserva = ({
         <div className={estilos.body_modal}>
             <div className={estilos.datos}>
                 <div className={estilos.datos_cliente}>
-                    <h2>Datos del cliente</h2>
-                    <h4>Nombre completo</h4>
+                    {reserva.map(i => 
+                        <div key={i.nro_reserva}>
+                            <h2>Datos del cliente</h2>
+                            <div className={estilos.group_data}>
+                                <h4>Nombre completo: </h4>
+                                <p>{i.nombre + ' ' + i.apellido}</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Nro. Documento: </h4>
+                                <p>{i.nro_documento}</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Nro. Telefono: </h4>
+                                <p>{i.nro_telefono}</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Correo Electronico: </h4>
+                                <p>{i.correo_electronico}</p>
+                            </div>
+                        </div>
+                    )}
                 </div>
                 <div className={estilos.datos_habitacion}>
-                    <h2>Datos de la reserva</h2>
+                    {reserva.map(i => 
+                        <div key={i.nro_reserva}>
+                            <h2>Datos de la reserva</h2>
+                            <div className={estilos.group_data}>
+                                <h4>Nro. Habitación: </h4>
+                                <p>{i.nro_habitacion}</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Categoría: </h4>
+                                <p>{i.categoria}</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Piso: </h4>
+                                <p>{i.piso}</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Precio: </h4>
+                                <p>$ {i.precio}</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Fecha entrada: </h4>
+                                <p>{i.fecha_entrada.substring(0, 10)}</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Fecha salida: </h4>
+                                <p>{i.fecha_salida.substring(0, 10)}</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Observaciones: </h4>
+                                <p>{i.observaciones}</p>
+                            </div>
+                        </div>    
+                    )}
 
                 </div>
             </div>
             <div className={estilos.buttons}>
-            <button className={estilos.button_cancel} 
+                <button className={estilos.button_cancel} 
                             onClick={() => cerrarModal(false)} 
                             type='button'>Cancelar</button>
-            <button className={estilos.button_add} type='button'>Modificar</button>
+                <button className={estilos.button_add} type='button'>Modificar</button>
             </div>
         </div>
       </div>
