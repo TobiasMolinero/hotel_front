@@ -81,8 +81,9 @@
 
 .datos_cliente, .datos_habitacion{
     padding: 10px;
-    border: 1px solid #57575748;
+    border: 1px solid #020120;
     border-radius: 5px;
+    background: #f8f8f8;
 }
 
 .datos_cliente h2, .datos_habitacion h2{
@@ -90,7 +91,7 @@
 }
 
 .datos_habitacion{
-    width: 250px;
+    width: 300px;
 }
 
 .buttons{

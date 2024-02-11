@@ -94,8 +94,16 @@ const ModalDetalleReserva = ({
                                 <p>{i.piso}</p>
                             </div>
                             <div className={estilos.group_data}>
-                                <h4>Precio: </h4>
+                                <h4>Precio Habitación: </h4>
                                 <p>$ {i.precio}</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Días de estadía: </h4>
+                                <p>{i.dias_reserva} días.</p>
+                            </div>
+                            <div className={estilos.group_data}>
+                                <h4>Importe Total: </h4>
+                                <p>$ {i.precio * i.dias_reserva}</p>
                             </div>
                             <div className={estilos.group_data}>
                                 <h4>Fecha entrada: </h4>
