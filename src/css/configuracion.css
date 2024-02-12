@@ -44,3 +44,20 @@
     gap: 8px;
     padding: 20px 10px;
 }
+
+/* CONFIG HABITACIONES*/
+
+.display_configuracion_habitaciones{
+    margin: 0 20px;
+    height: fit-content;
+}
+
+.container_button-habitaciones{
+    margin: 20px 0;
+}
+
+/* .container_tabla-habitaciones{
+    max-height: 400px;
+    box-shadow: 0 3px 7px #a09797;
+    overflow: auto;
+} */

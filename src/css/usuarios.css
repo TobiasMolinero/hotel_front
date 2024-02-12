@@ -2,3 +2,7 @@
     height: fit-content;
     margin: 0 20px;
 }
+
+.container_tabla{
+    box-shadow: 0 3px 7px #a09797;
+}

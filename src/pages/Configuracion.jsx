@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar';
 import '../App.css';
 import '../css/configuracion.css';
 import { Link } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
 
 const Configuracion = () => {
 
@@ -15,7 +14,7 @@ const Configuracion = () => {
                 <div className="display_configuracion">
                     <div className="config_options">
                         <div className="opcion">
-                            <Link className='opcion_link'>
+                            <Link to={'/app/configuracion/habitaciones'} className='opcion_link'>
                                 <div className="opcion_header">
                                     <h4>Gestionar Habitaciones</h4>
                                     <span><i className='bi bi-pencil'></i> Editar</span>

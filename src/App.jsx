@@ -10,6 +10,7 @@ import CheckInRoom from './pages/CheckInRoom';
 import Clientes from './pages/Clientes';
 import Usuarios from './pages/Usuarios';
 import Configuracion from './pages/Configuracion';
+import ConfigRoom from './pages/ConfigRoom';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path='/app/clientes' element={<Clientes />}/>
             <Route path='/app/usuarios' element={<Usuarios />}/>
             <Route path='/app/configuracion' element={<Configuracion />}/>
+            <Route path='/app/configuracion/habitaciones' element={<ConfigRoom />}/>
           </Route>
         </Routes>
         
