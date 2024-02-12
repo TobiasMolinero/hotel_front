@@ -9,6 +9,7 @@ import Recepcion from './pages/Recepcion';
 import CheckInRoom from './pages/CheckInRoom';
 import Clientes from './pages/Clientes';
 import Usuarios from './pages/Usuarios';
+import Configuracion from './pages/Configuracion';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path='/app/recepcion/:id' element={<CheckInRoom />} />
             <Route path='/app/clientes' element={<Clientes />}/>
             <Route path='/app/usuarios' element={<Usuarios />}/>
+            <Route path='/app/configuracion' element={<Configuracion />}/>
           </Route>
         </Routes>
         

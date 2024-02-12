@@ -67,7 +67,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li hidden={userType === 'empleado' ? true : false}>
-            <Link className={estilos.link}>
+            <Link to={'/app/configuracion'} className={estilos.link}>
               <i className='bi bi-gear-fill'></i>Configuración
             </Link>
           </li>

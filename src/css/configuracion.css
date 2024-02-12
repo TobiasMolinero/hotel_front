@@ -1,0 +1,46 @@
+.display_configuracion{
+    margin: 50px 20px 0 20px ;
+    max-height: 520px;
+    overflow: auto;
+    border: 1px solid #0000003b
+}
+
+.config_options{
+    background: hsl(0, 0%, 95%);
+    padding: 10px 20px 20px 20px ;
+}
+
+.opcion{
+
+    border-bottom: 1px solid #0000003b;
+    cursor: pointer;
+}
+.opcion:hover{
+    background: #d8d6d6;
+}
+.opcion h4{
+    font-size: 1.8rem;
+}
+.opcion p{
+    font-size: 1.6rem;
+    color: #00000091;
+}
+.opcion span{
+    font-size: 1.4rem;
+    text-decoration: underline;
+    color: rgb(0, 0, 197);
+}
+
+.opcion_header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.opcion_link{
+    color: initial;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 10px;
+}
