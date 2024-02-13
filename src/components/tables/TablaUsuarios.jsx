@@ -49,6 +49,7 @@ const TablaUsuarios = ({
   const deleteUsuario = async (id) => {
     try {
       await confirmar.fire({
+        icon: 'warning',
         title: 'Eliminar usuario',
         text: '¿Está seguro que desea dar de baja este usuario?'
       }).then(async (result) => {

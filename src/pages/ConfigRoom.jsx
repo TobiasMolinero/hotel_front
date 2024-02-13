@@ -7,6 +7,7 @@ import ButtonAdd from "../components/buttons/ButtonAdd";
 import TablaHabitaciones from "../components/tables/TablaHabitaciones";
 import { useState } from "react";
 import ModalAddRoom from "../components/modals/ModalAddRoom";
+import ModalEditRoom from "../components/modals/ModalEditRoom";
 
 const ConfigRoom = () => {
 
@@ -23,17 +24,19 @@ const ConfigRoom = () => {
     }
 
     const abrirModalEdit = (id, value) => {
-        setIdHabitacion(id)
+        setIdHabitacion(id);
+        setModalEdit(value);
     }
 
     const cerrarModalEdit = (value) => {
-
+        setModalEdit(value);
     }
 
   return (
     <div className="app">
         <Navbar />
         {modalAdd ? <ModalAddRoom cerrarModal={cerrarModalAdd}/> : ''}
+        {modalEdit ? <ModalEditRoom idHabitacion={idHabitacion} cerrarModal={cerrarModalEdit}/> : ''}
         <div className="content">
             <Header nombreIcono={'bi bi-gear-fill'} title={'Configuración/Habitaciones'} />
             <div className="display_configuracion_habitaciones">
@@ -44,7 +47,7 @@ const ConfigRoom = () => {
                     <ButtonAdd abrirModal={abrirModalAdd} text={'Agregar Habitación'}/>
                 </div>
                 <div className="container_table">
-                    <TablaHabitaciones />
+                    <TablaHabitaciones abrirModalEdit={abrirModalEdit} modalAdd={modalAdd} modalEdit={modalEdit}/>
                 </div>
             </div>
         </div>

@@ -44,6 +44,7 @@ const TablaClientes = ({
     const deleteCliente = async(id) => {
         try {
             await confirmar.fire({
+                icon: 'warning',
                 title: 'Eliminar cliente',
                 text: '¿Está seguro que desea dar de baja este cliente?'
             }).then(async(result) =>{

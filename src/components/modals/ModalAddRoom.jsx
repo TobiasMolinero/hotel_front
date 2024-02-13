@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import estilos from '../../css/modules/modal.module.css';
 import { useNavigate } from 'react-router-dom';
-import { warning } from '../../constants/alerts';
+import { success, warning } from '../../constants/alerts';
 import { logout } from '../../constants/functions';
 
 const ModalAddRoom = ({
@@ -69,6 +69,39 @@ const ModalAddRoom = ({
         }
     }
 
+    const addRoom = async(e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:3000/habitaciones/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    nro_habitacion: nroHabitacion,
+                    categoria: categoria,
+                    piso: piso 
+                })
+            })
+            const data = await response.json();
+            if(data.alert){
+                await warning.fire({
+                    text: data.alert
+                })
+                logout();
+                navigate('/login');
+            } else {
+                await success.fire({
+                    text: data.message
+                })
+                cerrarModal(false);
+            }
+        } catch (error) {
+            alert(error);
+        }
+    }
+
     useEffect(() => {
         getCategorias();
         getPisos();
@@ -82,7 +115,7 @@ const ModalAddRoom = ({
                     <i onClick={() => cerrarModal(false)} className='bi bi-x-circle'></i>
                 </div>
                 <div className={estilos.body_modal}>
-                    <form className={estilos.form}>
+                    <form onSubmit={addRoom} className={estilos.form}>
                         <div className={estilos.group_input}>
                             <label htmlFor="inputNroHabitacion">Nro. Habitación*</label>
                             <input type="text"

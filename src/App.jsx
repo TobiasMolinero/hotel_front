@@ -11,6 +11,8 @@ import Clientes from './pages/Clientes';
 import Usuarios from './pages/Usuarios';
 import Configuracion from './pages/Configuracion';
 import ConfigRoom from './pages/ConfigRoom';
+import ConfigCategoria from './pages/ConfigCategoria';
+import ConfigPiso from './pages/ConfigPiso';
 
 
 function App() {
@@ -29,6 +31,8 @@ function App() {
             <Route path='/app/usuarios' element={<Usuarios />}/>
             <Route path='/app/configuracion' element={<Configuracion />}/>
             <Route path='/app/configuracion/habitaciones' element={<ConfigRoom />}/>
+            <Route path='/app/configuracion/categorias' element={<ConfigCategoria />} />
+            <Route path='/app/configuracion/pisos' element={<ConfigPiso />} />
           </Route>
         </Routes>
         

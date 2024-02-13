@@ -7,8 +7,7 @@ import { logout } from '../../constants/functions';
 import { useNavigate } from 'react-router-dom';
 import { warning, confirmar, success } from '../../constants/alerts';
 
-
-const TablaHabitaciones = ({
+const TablaCategorias = ({
     abrirModalEdit,
     modalAdd,
     modalEdit
@@ -21,7 +20,7 @@ const TablaHabitaciones = ({
 
     const getData = async() => {
         try {
-            const response = await fetch('http://localhost:3000/habitaciones', {
+            const response = await fetch('http://localhost:3000/categorias', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
@@ -37,21 +36,21 @@ const TablaHabitaciones = ({
             } else {
                 setData(data);
             }
-            
+
         } catch (error) {
             alert(error);
         }
     }
 
-    const deleteRoom = async(id) => {
+    const deleteCategoria = async(id) => {
         try {
             await confirmar.fire({
                 icon: 'warning',
-                title: 'Eliminar habitación',
+                title: 'Eliminar categoría',
                 text: '¿Está seguro que desea borrar este registro?'
             }).then(async (result) => {
                 if(result.isConfirmed){
-                    const response = await fetch(`http://localhost:3000/habitaciones/delete/${id}`, {
+                    const response = await fetch(`http://localhost:3000/categorias/delete/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
@@ -86,40 +85,41 @@ const TablaHabitaciones = ({
         getData();
     }, [modalAdd, modalEdit])
 
+
     return (
         <table className={estilos.table}>
             <thead>
                 <tr>
-                    <th>Nro. Habitación</th>
-                    <th>Categoría</th>
-                    <th>Piso</th>
+                    <th>ID Categoría</th>
+                    <th>Nombre</th>
+                    <th>Detalles</th>
                     <th>Precio</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                {data.length === 0 ? 
+                {data.length === 0 ?
                     <tr>
                         <td colSpan={5}>
                             <h2>No hay habitaciones registradas</h2>
                         </td>
                     </tr>
                     :
-                    data.map(i => 
-                        <tr key={i.id_habitacion}>
-                            <td>{i.nro_habitacion}</td>
-                            <td>{i.categoria}</td>
-                            <td>{i.piso}</td>
+                    data.map(i =>
+                        <tr key={i.id_categoria}>
+                            <td>{i.id_categoria}</td>
+                            <td>{i.descripcion}</td>
+                            <td>{i.detalle}</td>
                             <td>{i.precio}</td>
                             <td className={estilos.column_action}>
-                                <button onClick={() => abrirModalEdit(i.id_habitacion, true)} className={estilos.button_edit}>
+                                <button onClick={() => abrirModalEdit(i.id_categoria, true)} className={estilos.button_edit}>
                                     <i className='bi bi-pencil-square'></i>
                                 </button>
-                                <button onClick={() => deleteRoom(i.id_habitacion)} className={estilos.button_delete}>
+                                <button onClick={() => deleteCategoria(i.id_categoria)} className={estilos.button_delete}>
                                     <i className='bi bi-trash-fill'></i>
                                 </button>
                             </td>
-                        </tr>    
+                        </tr>
                     )
                 }
             </tbody>
@@ -127,4 +127,4 @@ const TablaHabitaciones = ({
     )
 }
 
-export default TablaHabitaciones
+export default TablaCategorias;

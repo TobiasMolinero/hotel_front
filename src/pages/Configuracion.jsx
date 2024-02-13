@@ -23,7 +23,7 @@ const Configuracion = () => {
                             </Link>
                         </div>
                         <div className="opcion">
-                            <Link className='opcion_link'>
+                            <Link to={'/app/configuracion/categorias'} className='opcion_link'>
                                 <div className="opcion_header">
                                     <h4>Gestionar Categorías</h4>
                                     <span><i className='bi bi-pencil'></i> Editar</span>
@@ -32,7 +32,7 @@ const Configuracion = () => {
                             </Link>
                         </div>
                         <div className="opcion">
-                            <Link className='opcion_link'>
+                            <Link to={'/app/configuracion/pisos'} className='opcion_link'>
                                 <div className="opcion_header">
                                     <h4>Gestionar niveles</h4>
                                     <span><i className='bi bi-pencil'></i> Editar</span>

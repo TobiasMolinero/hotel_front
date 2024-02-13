@@ -53,7 +53,7 @@ const ModalAddUsuario = ({
                 await success.fire({
                     text: data.message
                 });
-                cerrarModal();
+                cerrarModal(false);
             }
         } catch (error) {
             alert(error);

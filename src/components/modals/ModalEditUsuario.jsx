@@ -15,9 +15,9 @@ const ModalEditUsuario = ({
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
 
-    const [usuario, setUsuario] = useState();
-    const [empleado, setEmpleado] = useState();
-    const [tipoUsuario, setTipoUsuario] = useState();
+    const [usuario, setUsuario] = useState('');
+    const [empleado, setEmpleado] = useState(0);
+    const [tipoUsuario, setTipoUsuario] = useState(0);
 
     const [listaTipoUsuario, setListaTipoUsuario] = useState([]);
     const [listaEmpleado, setListaEmpleado] = useState([]);
